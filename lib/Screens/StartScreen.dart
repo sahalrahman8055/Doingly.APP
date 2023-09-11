@@ -1,4 +1,3 @@
-import 'package:doingly/widgets/BottomScreen.dart';
 import 'package:doingly/Screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';

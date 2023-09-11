@@ -1,7 +1,5 @@
-import 'package:doingly/Screens/HomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:doingly/DB/functions/CategoryDB.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 import '../../model/category/Category_model.dart';
 
@@ -37,9 +35,7 @@ class _CategoryTileState extends State<categoryTile> {
                   title: Text(data.categoryName),
                   trailing: IconButton(
                     onPressed: () {
-                      setState(() {
-                        _categoryDB.deleteCategory(data.categoryid);
-                      });
+                      _categoryDB.deleteCategory(data.categoryid);
                     },
                     icon: Icon(Icons.delete),
                   ),

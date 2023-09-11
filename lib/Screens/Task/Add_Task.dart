@@ -1,7 +1,9 @@
 import 'package:doingly/DB/functions/CategoryDB.dart';
 import 'package:doingly/DB/functions/TaskDB.dart';
+import 'package:doingly/Screens/Task/TaskScreen.dart';
 
 import 'package:doingly/model/task/TaskModel.dart';
+import 'package:doingly/widgets/BottomScreen.dart';
 import 'package:doingly/widgets/button.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
@@ -21,8 +23,6 @@ final categoryDB = Hive.box<CategoryModel>(categoryDBName);
 class _AddTaskState extends State<AddTask> {
   DateTime date = DateTime.now();
 
-  String? selectedFinanace;
-
   CategoryModel? selectedCategoryModel;
 
   final _formKey = GlobalKey<FormState>();
@@ -30,10 +30,6 @@ class _AddTaskState extends State<AddTask> {
   final TextEditingController explainController = TextEditingController();
 
   FocusNode ex = FocusNode();
-  final TextEditingController amountcontroller = TextEditingController();
-  FocusNode amount = FocusNode();
-
-  final List<String> _iteminex = ['income', 'expense'];
 
   @override
   Widget build(BuildContext context) {
@@ -91,6 +87,9 @@ class _AddTaskState extends State<AddTask> {
               onTap: () {
                 if (_formKey.currentState!.validate()) {
                   AddTask();
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => BottomScreen(),
+                  ));
                 }
               },
               child: button(size.width * 0.30, size.height * 0.06, 'Save', 18),
@@ -233,8 +232,8 @@ class _AddTaskState extends State<AddTask> {
         category: selectedCategoryModel!);
     await TaskDB().insertTransaction(model);
     // ignore: use_build_context_synchronously
-    Navigator.of(context).pop();
-    TaskDB.instance.getAllTransactions();
+
+    TaskDB.instance.getAllTask();
     // ignore: use_build_context_synchronously
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(

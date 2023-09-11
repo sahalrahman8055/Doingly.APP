@@ -1,5 +1,5 @@
 import 'package:doingly/Screens/HomeScreen.dart';
-import 'package:doingly/Screens/LoginScreen.dart';
+
 import 'package:doingly/Screens/Task/TaskScreen.dart';
 import 'package:doingly/Screens/category/Add_Category.dart';
 import 'package:doingly/Screens/Task/Add_Task.dart';
@@ -47,8 +47,8 @@ class _BottomScreenState extends State<BottomScreen> {
                 backgroundColor: Color(0xFF72A6F8),
                 label: 'Add Task',
                 onTap: () {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => AddTask()));
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => AddTask()));
                   ;
                 },
               ),
@@ -60,8 +60,8 @@ class _BottomScreenState extends State<BottomScreen> {
                   backgroundColor: Color(0xFF72A6F8),
                   label: 'Add Category',
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AddCategory()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => AddCategory()));
                   }),
             ],
           ),

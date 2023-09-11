@@ -1,9 +1,8 @@
-import 'package:doingly/DB/functions/CategoryDB.dart';
 import 'package:doingly/Screens/NavBarScreen.dart';
 import 'package:doingly/Screens/category/category_tile.dart';
-import 'package:doingly/Screens/util/todo_tile.dart';
+
 import 'package:flutter/material.dart';
-import 'package:fluttericon/font_awesome_icons.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeScreen extends StatefulWidget {

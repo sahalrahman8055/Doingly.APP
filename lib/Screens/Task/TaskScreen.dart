@@ -1,7 +1,9 @@
+import 'package:doingly/model/task/TaskModel.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../../DB/functions/TaskDB.dart';
 import '../util/todo_tile.dart';
 
 class TaskScreen extends StatefulWidget {
@@ -11,7 +13,10 @@ class TaskScreen extends StatefulWidget {
   _TaskScreenState createState() => _TaskScreenState();
 }
 
+ValueNotifier<List<TaskModel>> taskListNotifier = ValueNotifier([]);
+
 class _TaskScreenState extends State<TaskScreen> {
+  final TaskDB _taskDB = TaskDB.instance;
   String searchText = '';
 
   void search(String value) {
@@ -151,26 +156,52 @@ class _TaskScreenState extends State<TaskScreen> {
                 Container(
                   height: 400,
                   width: double.infinity,
-                  color: Colors.transparent,
-                  child: ListView(
-                    children: [
-                      ToDoTile(
-                        taskName: 'MAKE ME',
-                        taskCompleted: true,
-                        onChanged: (p0) {},
-                      ),
-                      ToDoTile(
-                        taskName: 'KILL  ME',
-                        taskCompleted: true,
-                        onChanged: (p0) {},
-                      ),
-                      ToDoTile(
-                        taskName: ' DIE FOR ME',
-                        taskCompleted: true,
-                        onChanged: (p0) {},
-                      ),
-                    ],
+
+                  child: ValueListenableBuilder(
+                    valueListenable: _taskDB.taskListNotifier,
+                    builder: (BuildContext ctx, List<TaskModel> taskList,
+                        Widget? child) {
+                      return ListView.separated(
+                        itemBuilder: (ctx, id) {
+                          final data = taskList[id];
+                          return Card(
+                            child: ListTile(
+                              title: Text(data.explain),
+                              trailing: IconButton(
+                                onPressed: () {
+                                  // _taskDB.deleteCategory(data.categoryid);
+                                },
+                                icon: Icon(Icons.delete),
+                              ),
+                            ),
+                          );
+                        },
+                        separatorBuilder: (ctx, id) {
+                          return const Divider();
+                        },
+                        itemCount: taskList.length,
+                      );
+                    },
                   ),
+                  // child: ValueListenableBuilder(
+                  //   valueListenable: taskListNotifier,
+                  //   builder: (BuildContext ctx, List<TaskModel> taskList,
+                  //       Widget? child) {
+                  //     return ListView.separated(
+                  //       itemBuilder: (ctx, index) {
+                  //         final data = taskList[index];
+                  //         return ListTile(
+                  //           title: Text('kitti'),
+                  //           subtitle: Text('idhum kitti'),
+                  //         );
+                  //       },
+                  //       separatorBuilder: (ctx, index) {
+                  //         return const Divider();
+                  //       },
+                  //       itemCount: taskList.length,
+                  //     );
+                  //   },
+                  // ),
                 ),
               ],
             ),

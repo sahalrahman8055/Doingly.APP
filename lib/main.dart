@@ -1,11 +1,7 @@
-import 'package:doingly/Screens/StartScreen.dart';
-import 'package:doingly/Screens/Task/TaskScreen.dart';
 import 'package:doingly/model/category/Category_model.dart';
 import 'package:doingly/widgets/BottomScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-
-import 'Screens/NavBarScreen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

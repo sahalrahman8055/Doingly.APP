@@ -1,7 +1,7 @@
 import 'package:doingly/Screens/Task/Add_Task.dart';
 
-import 'package:doingly/Screens/category/category_tile.dart';
 import 'package:doingly/model/category/Category_model.dart';
+import 'package:doingly/widgets/BottomScreen.dart';
 import 'package:doingly/widgets/button.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,6 @@ class _AddCategoryState extends State<AddCategory> {
   String? selectedCategoryImage;
   final _formKey = GlobalKey<FormState>();
   final _nameOfCategory = TextEditingController();
-  
 
   void initstate() {
     super.initState();
@@ -75,7 +74,7 @@ class _AddCategoryState extends State<AddCategory> {
                   addCategory();
 
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context) => categoryTile()));
+                      MaterialPageRoute(builder: (context) => BottomScreen()));
                 }
               },
               child: button(120, 50, 'Save', 18),
