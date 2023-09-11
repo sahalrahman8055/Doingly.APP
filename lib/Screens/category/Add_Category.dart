@@ -1,5 +1,5 @@
 import 'package:doingly/Screens/Task/Add_Task.dart';
-import 'package:doingly/Screens/Task/TaskScreen.dart';
+
 import 'package:doingly/Screens/category/category_tile.dart';
 import 'package:doingly/model/category/Category_model.dart';
 import 'package:doingly/widgets/button.dart';
@@ -18,8 +18,7 @@ class _AddCategoryState extends State<AddCategory> {
   String? selectedCategoryImage;
   final _formKey = GlobalKey<FormState>();
   final _nameOfCategory = TextEditingController();
-
-  final List<String> _item = ['food', 'transportation', 'health', 'education'];
+  
 
   void initstate() {
     super.initState();
